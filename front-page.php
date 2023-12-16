@@ -10,6 +10,8 @@
 
   <h1 class="my-3"><?php the_title(); ?></h1>
 
+  <h2>Este es un subtitulo</h2>
+
   <?php the_content(); ?>
 
 <?php 

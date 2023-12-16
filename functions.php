@@ -19,7 +19,7 @@ function assets(){
 
   wp_register_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css', '', '5.3.2', 'all');
   wp_register_style( 'quicksand', 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap','','1.0','all');
-  wp_register_style( 'nunito', 'https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap','','1.0', 'all');
+  wp_register_style( 'nunito', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap','','1.0', 'all');
   wp_register_style( 'amatic', 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap','','1.0', 'all');
 
   wp_enqueue_style('estilos', get_stylesheet_uri(), array('bootstrap', 'quicksand', 'nunito', 'amatic'), '1.0', 'all');
@@ -64,99 +64,112 @@ function sidebar() {
 
 add_action( 'widgets_init', 'sidebar' );
 
-function comercios_type() {
+function create_comercios_cpt() {
 
   $labels = array(
+    'name'                => _x( 'Comercios', 'Post Type General Name', 'comercioseguro' ),
+    'singular_name'       => _x( 'Comercio', 'Post Type Singular Name', 'comercioseguro' ),
+    'menu_name'           => __( 'Comercios', 'comercioseguro' ),
+    'parent_item_colon'   => __( 'Comercio Padre', 'comercioseguro' ),
+    'all_items'           => __( 'Todos los Comercios', 'comercioseguro' ),
+    'view_item'           => __( 'Ver Comercio', 'comercioseguro' ),
+    'add_new_item'        => __( 'Añadir nuevo Comercio', 'comercioseguro' ),
+    'add_new'             => __( 'Añadir nuevo', 'comercioseguro' ),
+    'edit_item'           => __( 'Editar Comercio', 'comercioseguro' ),
+    'update_item'         => __( 'Actualizar Comercio', 'comercioseguro' ),
+    'search_items'        => __( 'Buscar Comercio', 'comercioseguro' ),
+    'not_found'           => __( 'Comercio No encontrado', 'comercioseguro' ),
+    'not_found_in_trash'  => __( 'Comercio No encontrado en Papelera', 'comercioseguro' ),
+    'add_new_item'             => __( 'Añadir nuevo Comercio', 'comercioseguro' ),
+    'new_item'                 => __( 'Nuevo Comercio', 'comercioseguro' ),
+    'view_items'               => __( 'Ver Comercios', 'comercioseguro' ),
+    'archives'                 => __( 'Archivos de Comercios', 'comercioseguro' ),
+    'attributes'               => __( 'Atributos de Comercio', 'comercioseguro' ),
+    'insert_into_item'         => __( 'Insertar en Comercio', 'comercioseguro' ),
+    'uploaded_to_this_item'    => __( 'Cargar a este Comercio', 'comercioseguro' ),
+    'featured_image'           => __( 'Imagen Destacada', 'comercioseguro' ),
+    'set_featured_image'       => __( 'Establecer Imagen Destacada', 'comercioseguro' ),
+    'remove_featured_image'    => __( 'Remover Imagen Destacada', 'comercioseguro' ),
+    'use_featured_image'       => __( 'Usar como Imagen Destacada', 'comercioseguro' ),
+    'filter_items_list'        => __( 'Filtrar Lista de Comercios', 'comercioseguro' ),
+    'filter_by_date'           => __( 'Filtrar por Fecha', 'comercioseguro' ),
+    'items_list_navigation'    => __( 'Lista de Navegación de Comercios', 'comercioseguro' ),
+    'items_list'               => __( 'Lista de Comercios', 'comercioseguro' ),
+    'item_published'           => __( 'Comercio Publicado.', 'comercioseguro' ),
+    'item_published_privately' => __( 'Comercio Publicado de forma privada.', 'comercioseguro' ),
+    'item_reverted_to_draft'   => __( 'Comercio convertido a Borrador.', 'comercioseguro' ),
+    'item_scheduled'           => __( 'Comercio Programado.', 'comercioseguro' ),
+    'item_updated'             => __( 'Comercio Cargado.', 'comercioseguro' ),
+    'item_link'                => __( 'Enlace al Comercio', 'comercioseguro' ),
+    'item_link_description'    => __( 'Un enlace al Comercio.', 'comercioseguro' ),
+  );
     
-    'name' => 'Comercios',
-    'singular_name' => 'Comercio',
-    'menu_name' => 'Comercios',
-
-  );
-
   $args = array(
-
-    'label' => 'Comercios',
-    'description' => 'Comercios afiliados',
-    'labels' => $labels,
-    'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+      'label'               => __( 'comercios', 'comercioseguro' ),
+      'description'         => __( 'Comercios afiliados a la plataforma', 'comercioseguro' ),
+      'labels'              => $labels,
+      // Features this CPT supports in Post Editor
+      'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+      'taxonomies'          => array( 'categoria' ),
+      'hierarchical'        => false,
+      'public'              => true,
+      'show_ui'             => true,
+      'show_in_menu'        => true,
+      'show_in_nav_menus'   => true,
+      'show_in_admin_bar'   => true,
+      'menu_position'       => 5,
+      'menu_icon'           => 'dashicons-store',
+      'rewrite'               => array( 'slug' => 'comercios' ),
+      'query_var'             => true,
+      'can_export'          => true,
+      'delete_with_user'      => false,
+      'has_archive'         => true,
+      'exclude_from_search' => false,
+      'publicly_queryable'  => true,
+      'capability_type'     => 'post',
+      'show_in_rest' => true,
 
   );
 
-  register_post_type( 'comercio', $args );
+  register_post_type( 'comercios', $args );
+
 }
 
-function comercios_cpt() {
-
+add_action( 'init', 'create_comercios_cpt' );
+  
+function create_comercios_taxonomy() {
+  
   $labels = array(
-
-     'name'                     => __( 'Comercios', 'TEXTDOMAINHERE' ),
-     'singular_name'            => __( 'Comercio', 'TEXTDOMAINHERE' ),
-     'add_new'                  => __( 'Añadir nuevo', 'TEXTDOMAINHERE' ),
-     'add_new_item'             => __( 'Añadir nuevo Comercio', 'TEXTDOMAINHERE' ),
-     'edit_item'                => __( 'Editar Comercio', 'TEXTDOMAINHERE' ),
-     'new_item'                 => __( 'Nuevo Comercio', 'TEXTDOMAINHERE' ),
-     'view_item'                => __( 'Ver Comercio', 'TEXTDOMAINHERE' ),
-     'view_items'               => __( 'Ver Comercios', 'TEXTDOMAINHERE' ),
-     'search_items'             => __( 'Buscar Comercios', 'TEXTDOMAINHERE' ),
-     'not_found'                => __( 'No se encontró Comercio.', 'TEXTDOMAINHERE' ),
-     'not_found_in_trash'       => __( 'No se encontró Comercio en la papelera.', 'TEXTDOMAINHERE' ),
-     'parent_item_colon'        => __( 'Comercios Padre:', 'TEXTDOMAINHERE' ),
-     'all_items'                => __( 'Todos los Comercios', 'TEXTDOMAINHERE' ),
-     'archives'                 => __( 'Archivo de Comercios', 'TEXTDOMAINHERE' ),
-     'attributes'               => __( 'Comercio Atributos', 'TEXTDOMAINHERE' ),
-     'insert_into_item'         => __( 'Insertar en Comercio', 'TEXTDOMAINHERE' ),
-     'uploaded_to_this_item'    => __( 'Subido a este Comercio', 'TEXTDOMAINHERE' ),
-     'featured_image'           => __( 'Imagen destacada', 'TEXTDOMAINHERE' ),
-     'set_featured_image'       => __( 'Insertar imagen destacada', 'TEXTDOMAINHERE' ),
-     'remove_featured_image'    => __( 'Remover imagen destacada', 'TEXTDOMAINHERE' ),
-     'use_featured_image'       => __( 'Usar como imagen destacada', 'TEXTDOMAINHERE' ),
-     'menu_name'                => __( 'Comercios', 'TEXTDOMAINHERE' ),
-     'filter_items_list'        => __( 'Filtar lista de Comercios', 'TEXTDOMAINHERE' ),
-     'filter_by_date'           => __( 'Filtrar por fecha', 'TEXTDOMAINHERE' ),
-     'items_list_navigation'    => __( 'Comercios Lista de navegaciòn', 'TEXTDOMAINHERE' ),
-     'items_list'               => __( 'Lista de Comercios', 'TEXTDOMAINHERE' ),
-     'item_published'           => __( 'Comercio publicado.', 'TEXTDOMAINHERE' ),
-     'item_published_privately' => __( 'Comercio publicado de forma privada.', 'TEXTDOMAINHERE' ),
-     'item_reverted_to_draft'   => __( 'Comercio guardado como borrador.', 'TEXTDOMAINHERE' ),
-     'item_scheduled'           => __( 'Comercio Programado.', 'TEXTDOMAINHERE' ),
-     'item_updated'             => __( 'Comercio actualizado.', 'TEXTDOMAINHERE' ),
-     'item_link'                => __( 'Enlace del Comercio', 'TEXTDOMAINHERE' ),
-     'item_link_description'    => __( 'Un enlace al Comercio.', 'TEXTDOMAINHERE' ),
-
-  );
-
+    'name' => _x( 'Categorias', 'taxonomy general name' ),
+    'singular_name' => _x( 'Categoria', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Buscar Categorias' ),
+    'popular_items' => __( 'Categorias Populares' ),
+    'all_items' => __( 'Todas las Categorias' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Editar Categoria' ), 
+    'update_item' => __( 'Actualizar Categoria' ),
+    'add_new_item' => __( 'Añadir nueva Categoria' ),
+    'new_item_name' => __( 'Nuevo Nombre de Categoria' ),
+    'separate_items_with_commas' => __( 'Separar Categorias con coma' ),
+    'add_or_remove_items' => __( 'Añadir o Eliminar Categoria' ),
+    'choose_from_most_used' => __( 'Elegir entre las categorias más utilizadas' ),
+    'menu_name' => __( 'Categorias' ),
+  ); 
+  
+// Now register the non-hierarchical taxonomy like tag
   $args = array(
-
-     'labels'                => $labels,
-     'description'           => __( 'Comercios afiliados', 'TEXTDOMAINHERE' ),
-     'public'                => true,
-     'hierarchical'          => false,
-     'exclude_from_search'   => false,
-     'publicly_queryable'    => true,
-     'show_ui'               => true,
-     'show_in_menu'          => true,
-     'show_in_nav_menus'     => false,
-     'show_in_admin_bar'     => false,
-     'show_in_rest'          => true,
-     'menu_position'         => 5,
-     'menu_icon'             => 'dashicons-store',
-     'capability_type'       => 'post',
-     'capabilities'          => array(),
-     'supports'              => array( 'title', 'editor', 'revisions' ),
-     'taxonomies'            => array(),
-     'has_archive'           => false,
-     'rewrite'               => array( 'slug' => 'cpar_comercio' ),
-     'query_var'             => true,
-     'can_export'            => true,
-     'delete_with_user'      => false,
-     'template'              => array(),
-     'template_lock'         => false,
-
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_in_rest' => true,
+    'show_admin_column' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'categoria' ),
   );
 
-  register_post_type( 'comercios_cpt', $args );
-
+  register_taxonomy('categorias', 'comercios', $args);
 }
 
-add_action( 'init', 'comercios_cpt' );
+add_action( 'init', 'create_comercios_taxonomy', 0 );

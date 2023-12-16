@@ -6,12 +6,29 @@ Author: Joseph Paucar
 Authon URI: http://github.com/josephpaucar
 License: GNU General Public Licence v2 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: comercioseguro
 
 */
 
 :root {
   --main-color: #0a457a;
+  --main-color-bg: #f3faff;
+  --grey: #828282;
   --black: #222328;
+  --secondary-color: #77b967;
+  --secondary-color-variant: #9fc704;
+  --main-font: 'Quicksand', sans-serif;
+  --secondary-font: 'Nunito', sans-serif;
+  --tertiary-font: 'Amatic SC', sans-serif;
+  --fs-standar: 16px;
+  --fs-btn: 14px;
+  --fs-nunito-display: 18px;
+  --fs-amatic-display: 35px;
+  --fs-amatic-subtitle: 30px;
+  --fs-quicksand-display: 100px;
+  --fs-quicksand-h2: 40px;
+  --fs-quicksand-h4: 28px;
+  --fs-quicksand-subtitle: 20px;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -80,9 +97,47 @@ header {
   height: 100px;
 }
 
+h1 {
+  font-family: var(--main-font);
+  font-size: var(--fs-quicksand-display);
+  font-weight: bold;
+  color: var(--black);
+  line-height: 110px;
+}
+
+.cs-page-title{
+  ont-family: var(--main-font);
+  font-size: var(--fs-quicksand-h2);
+  font-weight: bold;
+  color: var(--black);
+  line-height: 56px;
+}
+
+h2 {
+  font-family: var(--tertiary-font);
+  font-size: var(--fs-amatic-display);
+  font-weight: 400;
+  color: #6fb7f5;
+  line-height: 42px;
+  letter-spacing: 1.8px;
+}
+
+p, li {
+  font-family: var(--secondary-font);
+  font-size: var(--fs-standar);
+  font-weight: 400;
+  color: #616161;
+  line-height: 30px;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 9px;
+}
+
 .navbar-nav a {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 18px;
+  font-family: var(--main-font);
+  font-size: var(--fs-standar);
   font-weight: bold;
   color: #101010;
   letter-spacing: 0.02em;
@@ -93,9 +148,21 @@ header {
   color: var(--main-color);
 }
 
+.cs-link {
+  font-family: var(--main-font);
+  font-size: var(--fs-btn);
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #6fb7f5;
+}
+.cs-link:hover{
+  color: #6fb7f5;
+  text-decoration: underline;
+}
+
 .cs-btn-outline {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
+  font-family: var(--main-font);
+  font-size: var(--fs-btn);
   font-weight: bold;
   text-transform: uppercase;
   padding: 10px 15px;
@@ -109,11 +176,97 @@ header {
   color: white;
 }
 
+.wp-block-button a {
+  background-color: #222328;
+  color: white;
+  border: 2px solid var(--main-color);
+}
+.wp-block-button a:hover {
+  background-color: var(--main-color);
+}
+
+
+/* ***ARCHIVE*** */
+.cs-card-title {
+  font-family: var(--main-font);
+  font-size: var(--fs-quicksand-h4);
+  line-height: 42px;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.cs-card {
+  background-color: var(--main-color-bg);
+  pointer-events: none;
+  transition-duration: 0.5s;
+}
+.cs-card:hover {
+  background-color: white;
+  transition-duration: 0.5s;
+  border-color: var(--black);
+}
+.cs-card a {
+  pointer-events: auto;
+}
+
+/* ***FOOTER*** */
 footer {
   background-color: #222328;
   color: white;
+  padding-top: 110px;
+}
+
+footer .wp-block-column {
+  margin-bottom: 30px;
+}
+
+footer p {
+  color: white;
+  margin-bottom: 20px;
 }
 
 footer img {
   width: 90px !important;
+  margin-bottom: 10px;
+}
+
+footer h2 {
+  color: white;
+  font-family: var(--main-font);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+footer li a {
+  text-decoration: none;
+  color: #c9c9c9;
+}
+footer li a:hover {
+  color: #6fb7f5;
+}
+
+
+footer .contact-info ul li{
+  color: white;
+}
+
+footer .social-icons {
+  margin-top: 20px;
+}
+
+footer .social-icons a{
+  font-size: 24px;
+}
+
+
+footer .copywight {
+  margin-top: 50px;
+  border-top: 2px solid #616161;
+  padding-top: 20px;
+}
+
+footer .copywight {
+  margin-bottom: 0;
 }
