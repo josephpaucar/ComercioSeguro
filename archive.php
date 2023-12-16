@@ -1,15 +1,19 @@
 <?php get_header(); 
       $current_term = single_term_title( "", false );
+      $zonas = get_field_object( 'zona' );
+      $choices = $zonas['choices'];
 ?>
 
 <main class="container">
 
   <div class="row">
-    <div class="col-8">
+    <div class="col-9">
       <h1 class="my-4 cs-page-title"><?php echo $current_term; ?></h1>
     </div>  
-    <div class="col-4">
-      
+    <div class="col-3 d-flex align-items-center">
+      <div class="cs-filtros">
+        <?php dynamic_sidebar('filtros'); ?>
+      </div>      
     </div>
   </div>
   

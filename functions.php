@@ -29,6 +29,11 @@ function assets(){
   wp_enqueue_script( 'boostrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js', array('popper'), '5.3.2', true );
 
   wp_enqueue_script( 'custom', get_template_directory_uri(  ).'/assets/js/custom.js', '', '1.0', true );
+  
+  wp_localize_script( 'custom', 'cs', array(
+    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+    'nonce' 	=> wp_create_nonce( 'prefix_public_nonce' ),
+  ));
 }
 
 add_action( 'wp_enqueue_scripts', 'assets' );
@@ -63,6 +68,22 @@ function sidebar() {
 }
 
 add_action( 'widgets_init', 'sidebar' );
+
+function filter_widget() {
+  register_sidebar( 
+    array(
+      'name' => 'Filtros',
+      'id' => 'filtros',
+      'description' => 'Zona de Widgets para filtrar Comercios',
+      'before_title' => '<h2>',
+      'after_title' => '</h2>',
+      'before_widget' => '<div id="%1$s" class="%2$s">',
+      'after_widget' => '</div>'
+    )
+  );
+}
+
+add_action( 'widgets_init', 'filter_widget' );
 
 function create_comercios_cpt() {
 
