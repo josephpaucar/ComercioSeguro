@@ -53,6 +53,22 @@ function add_link_atts($atts) {
 }
 add_filter( 'nav_menu_link_attributes', 'add_link_atts');
 
+function header_search() {
+  register_sidebar( 
+    array(
+      'name' => 'Header Search',
+      'id' => 'header',
+      'description' => 'Zona de Widgets para el header',
+      'before_title' => '<h2>',
+      'after_title' => '</h2>',
+      'before_widget' => '<div id="%1$s" class="%2$s">',
+      'after_widget' => '</div>'
+    )
+  );
+}
+
+add_action( 'widgets_init', 'header_search' );
+
 function sidebar() {
   register_sidebar( 
     array(

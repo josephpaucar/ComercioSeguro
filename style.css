@@ -94,10 +94,6 @@ th {
   text-align: inherit;
 }
 
-header {
-  height: 100px;
-}
-
 h1 {
   font-family: var(--main-font);
   font-size: var(--fs-quicksand-display);
@@ -137,29 +133,10 @@ li {
   margin-bottom: 9px;
 }
 
-.navbar-nav a {
-  font-family: var(--main-font);
-  font-size: var(--fs-standar);
-  font-weight: bold;
-  color: #101010;
-  letter-spacing: 0.02em;
-  line-height: 30px;
-}
-
-.navbar-nav a:hover {
-  color: var(--main-color);
-}
-
-.cs-link {
-  font-family: var(--main-font);
-  font-size: var(--fs-btn);
-  font-weight: bold;
-  text-transform: uppercase;
-  color: var(--main-color-link);
-}
-.cs-link:hover{
-  text-decoration: underline;
-}
+.remove-scrolling { 
+  height: 100%; 
+  overflow: hidden; 
+} 
 
 .cs-btn-outline {
   font-family: var(--main-font);
@@ -179,6 +156,63 @@ li {
   transition-duration: 0.5s;
 }
 
+.cs-link {
+  font-family: var(--main-font);
+  font-size: var(--fs-btn);
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--main-color-link);
+}
+.cs-link:hover{
+  text-decoration: underline;
+}
+
+/* ***HEADER*** */
+
+header {
+  box-shadow: 0px 3px 5px 0px rgba(244, 244, 244, 0.75);
+  position: relative;
+}
+
+header .header-search input {
+  background-color: var(--main-color-bg);
+  padding: 10px 10px;
+  font-family: var(--secondary-font);
+  font-size: var(--fs-standar);
+  color: var(--black);
+  border: 1px solid var(--main-color);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+header .header-search input:focus {
+  background-color: white;
+}
+
+header .header-search button {
+  margin: 0;
+  border: none;
+  background-color: var(--main-color);
+  padding: 10px;
+  color: white;
+  border: 1px solid var(--main-color);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.navbar-nav a, .mobile-navbar a {
+  font-family: var(--main-font);
+  font-size: var(--fs-standar);
+  font-weight: bold;
+  color: #101010;
+  letter-spacing: 0.02em;
+  line-height: 30px;
+}
+
+.navbar-nav a:hover, .mobile-navbar a:hover {
+  color: var(--main-color-link);
+}
+
 .wp-block-button a {
   background-color: #222328;
   color: white;
@@ -186,6 +220,66 @@ li {
 }
 .wp-block-button a:hover {
   background-color: var(--main-color);
+}
+
+
+/* ***HAMBURGER MENU*** */
+
+.hamburger-menu {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 400;
+}
+
+.hamburger-menu .line {
+  transition: 
+    y 300ms ease-in 300ms,
+    rotate 300ms ease-in,
+    opacity 0ms 300ms;
+  transform-origin: center;
+}
+
+.hamburger-menu[aria-expanded="true"] .line {
+  transition: 
+    y 300ms ease-in,
+    rotate 300ms ease-in 300ms,
+    opacity 0ms 300ms;
+}
+
+.hamburger-menu[aria-expanded="true"] :is(.top, .bottom) {
+  y: 72;
+}
+
+.hamburger-menu[aria-expanded="true"] .top {
+  rotate: 45deg;
+}
+.hamburger-menu[aria-expanded="true"] .bottom {
+  rotate: -45deg;
+}
+.hamburger-menu[aria-expanded="true"] .middle {
+  opacity: 0;
+}
+
+.cs-mobile-navigation {
+  position: fixed;
+  z-index: 300;
+  inset: 0 0 0 30%;
+  padding: min(30vh, 10rem) 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+
+  transform: translateX(100%);
+  transition: all ease-in 0.6s;
+}
+
+.cs-mobile-navigation[data-visible="true"] {
+  transform: translateX(0%);
+  transition: all ease-in 0.6s;
 }
 
 
