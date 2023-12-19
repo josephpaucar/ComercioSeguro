@@ -28,9 +28,9 @@
             <a href="<?php the_permalink(  ); ?>" >
               <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top object-fit-cover h-" style="height: 13rem;" alt="logo">
             </a>
-            <div class="card-body text-center">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
               <h4 class="card-title cs-card-title"><?php the_title(  ); ?></h4>
-              <div class="d-flex justify-content-center mt-3">
+              <div>
                 <a href="<?php the_permalink(  ); ?>" class="btn cs-link">Descubre más</a>
               </div>
             </div>
