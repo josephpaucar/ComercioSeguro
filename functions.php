@@ -165,7 +165,6 @@ function create_comercios_cpt() {
       'publicly_queryable'  => true,
       'capability_type'     => 'post',
       'show_in_rest' => true,
-
   );
 
   register_post_type( 'comercios', $args );

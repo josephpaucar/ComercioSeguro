@@ -43,8 +43,8 @@
       <div class="image-gallery">
       <?php if( $gallery ): ?>
         <img src="<?php echo esc_url( $gallery['imagen_1']['url'] ); ?>" alt="img1">
-        <img src="https://source.unsplash.com/random/600x600?bear,seed=${200}" alt="img1">
-        <img src="https://source.unsplash.com/random/600x600?bear,seed=${300}" alt="img1">
+        <img src="<?php echo esc_url( $gallery['imagen_2']['url'] ); ?>" alt="img1">
+        <img src="<?php echo esc_url( $gallery['imagen_3']['url'] ); ?>" alt="img1">
         <img src="https://source.unsplash.com/random/600x600?bear,seed=${400}" alt="img1">
       <?php endif; ?>
       </div>
@@ -53,34 +53,28 @@
 
   <div class="cs-single-sellos">
     <div class="container">
-      <div class="row text-center">
+      <div class="row text-center justify-content-center">
         <div class="col-12">
           <h2 class="mb-3">Sellos Municipales</h2>
         </div>
+        <?php if( $sellos && in_array('fiscalizacion', $sellos) ): ?>
         <div class="col-4">
-          <?php if( $sellos && in_array('autorizacion', $sellos) ): ?>
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/autorizacion.png" alt="Sello de Autorizacón" width="auto" height="123" class="d-inline-block align-text-top">
-          <?php else: ?>
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/en_proceso.png" alt="Sello de Autorizacón" width="auto" height="123" class="d-inline-block align-text-top">
-          <?php endif; ?>
-          <h4 class="mt-2 sellos_caption">Autorización</h4>
-        </div>
-        <div class="col-4">
-          <?php if( $sellos && in_array('fiscalizacion', $sellos) ): ?>
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/fiscalizacion.png" alt="Sello de Fiscalización" width="auto" height="123" class="d-inline-block align-text-top">
-          <?php else: ?>
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/en_proceso.png" alt="Sello de Autorizacón" width="auto" height="123" class="d-inline-block align-text-top">
-          <?php endif; ?>
           <h4 class="mt-2 sellos_caption">Fiscalización</h4>
         </div>
+        <?php endif; ?>
+        <?php if( $sellos && in_array('autorizacion', $sellos) ): ?>
         <div class="col-4">
-          <?php if( $sellos && in_array('seguridad', $sellos) ): ?>
+          <img src="<?php echo get_template_directory_uri() ?>/assets/img/autorizacion.png" alt="Sello de Autorizacón" width="auto" height="123" class="d-inline-block align-text-top">
+          <h4 class="mt-2 sellos_caption">Autorización</h4>
+        </div>
+        <?php endif; ?>
+        <?php if( $sellos && in_array('seguridad', $sellos) ): ?>
+        <div class="col-4">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/seguridad.png" alt="Sello de Seguridad" width="auto" height="123" class="d-inline-block align-text-top">
-          <?php else: ?>
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/en_proceso.png" alt="Sello de Autorizacón" width="auto" height="123" class="d-inline-block align-text-top">
-          <?php endif; ?>
           <h4 class="mt-2 sellos_caption">Seguridad</h4>
         </div>
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -153,16 +147,16 @@
                   Redes sociales:
                 </div>
                 <div class="resume-section__right">
-                  <a href="<?php echo esc_url( $redes_sociales['facebook'] ); ?>"> 
+                  <a href="<?php echo esc_url( $redes_sociales['facebook'] ); ?>" target="_blank"> 
                     Facebook
                   </a>
-                  <a href="<?php echo esc_url( $redes_sociales['instagram'] ); ?>"> 
+                  <a href="<?php echo esc_url( $redes_sociales['instagram'] ); ?>" target="_blank"> 
                     Instagram
                   </a>
-                  <a href="<?php echo esc_url( $redes_sociales['twitter'] ); ?>"> 
+                  <a href="<?php echo esc_url( $redes_sociales['twitter'] ); ?>" target="_blank"> 
                     Twitter
                   </a>
-                  <a href="<?php echo esc_url( $redes_sociales['youtube'] ); ?>"> 
+                  <a href="<?php echo esc_url( $redes_sociales['youtube'] ); ?>" target="_blank"> 
                     Youtube
                   </a>
                 </div>
