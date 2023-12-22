@@ -43,9 +43,15 @@
       ?>
       </div>
 
-      <nav class="pagination d-flex justify-content-center">
-        <?php pagination_bar(); ?>
-      </nav>
+      <?php the_posts_pagination(
+        array(
+            'mid_size'  => 2,
+            'prev_text' => __( 'Anterior', 'textdomain' ),
+            'next_text' => __( 'Siguiente', 'textdomain' ),
+        )
+      ); ?>
+      <?php wp_reset_query(); ?>
+      
     </div>
   </div>
   

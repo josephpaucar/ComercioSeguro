@@ -4,7 +4,9 @@
   $value = $field['value'];
   $label = $field['choices'][ $value ];
   $gallery = get_field('galeria_de_imagenes');
-  $sellos = get_field('sellos_municipales');
+  $certificado_autorizacion = get_field('certificado_de_autorizacion');
+  $certificado_fiscalizacion = get_field('certificado_de_fiscalizacion');
+  $certificado_seguridad = get_field('certificado_de_seguridad');
   $datos_empresa = get_field('datos_de_la_empresa');
   $redes_sociales = get_field('redes_sociales');
 ?>
@@ -57,20 +59,24 @@
         <div class="col-12">
           <h2 class="mb-3">Sellos Municipales</h2>
         </div>
-        <?php if( $sellos && in_array('fiscalizacion', $sellos) ): ?>
-        <div class="col-4">
+        <?php if( $certificado_fiscalizacion['fiscalizacion'] ): ?>
+        <div class="col-6 col-sm-4">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/fiscalizacion.png" alt="Sello de Fiscalización" width="auto" height="123" class="d-inline-block align-text-top">
           <h4 class="mt-2 sellos_caption">Fiscalización</h4>
         </div>
         <?php endif; ?>
-        <?php if( $sellos && in_array('autorizacion', $sellos) ): ?>
-        <div class="col-4">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/autorizacion.png" alt="Sello de Autorizacón" width="auto" height="123" class="d-inline-block align-text-top">
-          <h4 class="mt-2 sellos_caption">Autorización</h4>
-        </div>
+        <?php if( $certificado_autorizacion['autorizacion'] ): ?>
+          <div class="col-6 col-sm-4">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/autorizacion.png" alt="Sello de Autorizacón" width="auto" height="123" class="d-inline-block align-text-top">
+            <h4 class="mt-2 sellos_caption">Autorización</h4>
+          </div>
+          <?php else: ?>
+          <div class="col-12">
+            <h4 class="mt-2 sellos_caption">Este establecimiento esta pendiente a revisión.</h4>
+          </div>
         <?php endif; ?>
-        <?php if( $sellos && in_array('seguridad', $sellos) ): ?>
-        <div class="col-4">
+        <?php if( $certificado_seguridad['seguridad'] ): ?>
+        <div class="col-6 col-sm-4">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/seguridad.png" alt="Sello de Seguridad" width="auto" height="123" class="d-inline-block align-text-top">
           <h4 class="mt-2 sellos_caption">Seguridad</h4>
         </div>

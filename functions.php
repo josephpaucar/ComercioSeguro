@@ -18,7 +18,7 @@ add_action( 'after_setup_theme', 'init_template');
 function assets(){
 
   wp_register_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css', '', '5.3.2', 'all');
-  wp_register_style( 'quicksand', 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap','','1.0','all');
+  wp_register_style( 'quicksand', 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap','','1.0','all');
   wp_register_style( 'nunito', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap','','1.0', 'all');
   wp_register_style( 'amatic', 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap','','1.0', 'all');
 

@@ -4,7 +4,7 @@
 
   <div class="pagina404">
     <h1>404 Página NO Encontrada</h1>
-    <h2>Haga <a href="<?php echo home_url(  ); ?>">click aquí</a> para volver a la página principal</h2>
+    <p>Haga <a class="cs-link" href="<?php echo home_url(  ); ?>">click aquí</a> para volver a la página principal</p>
   </div>
 
 </main>

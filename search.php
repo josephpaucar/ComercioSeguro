@@ -10,11 +10,12 @@ get_header(); ?>
     /* Initiate the search with the wp_query */ 
     $s = get_search_query();
     $args = array(
-                    'post_type' => 'comercios',
-                    'post_status' => 'publish',
-                    's' => $s,
-                    'posts_per_page' => 10,
-                );
+              'post_type' => 'comercios',
+              'post_status' => 'publish',
+              's' => $s,
+              'paged' => $paged,
+              'posts_per_page' => 3,
+            );
     // The Query
     $the_query = new WP_Query( $args );
 ?>
@@ -48,7 +49,6 @@ get_header(); ?>
                 </div>
               </div>
             </div>
-
             <?php endwhile; ?>
         <?php else: ?>
         <div class="post-card card-container order-auto not-found">
@@ -59,13 +59,18 @@ get_header(); ?>
             </div>
         </div>
         <?php endif; ?>
+
+        <div class="col-12">
+              <?php the_posts_pagination(
+              array(
+                'mid_size'  => 2,
+                'prev_text' => __( 'Anterior', 'comercioseguro' ),
+                'next_text' => __( 'Siguiente', 'comercioseguro' ),
+                )
+              ); ?>
+              <?php wp_reset_query(); ?>
+            </div>
       </div>
-      
-      <?php if( $the_query->found_posts > 10 ): ?>
-      <nav class="pagination d-flex justify-content-center">
-        <?php pagination_bar(); ?>
-      </nav>
-      <?php endif; ?>
     </div>
   </div>
 </main>
