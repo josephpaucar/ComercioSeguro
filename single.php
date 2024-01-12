@@ -42,14 +42,27 @@
     </div>
 
     <div class="col-12">
-      <div class="image-gallery">
       <?php if( $gallery ): ?>
-        <img src="<?php echo esc_url( $gallery['imagen_1']['url'] ); ?>" alt="img1">
-        <img src="<?php echo esc_url( $gallery['imagen_2']['url'] ); ?>" alt="img1">
-        <img src="<?php echo esc_url( $gallery['imagen_3']['url'] ); ?>" alt="img1">
-        <img src="https://source.unsplash.com/random/600x600?bear,seed=${400}" alt="img1">
-      <?php endif; ?>
+      <div class="image-gallery">
+        <?php if ($gallery['imagen_1']): ?>
+        <img src="<?php echo esc_url( $gallery['imagen_1']['url'] ); ?>" alt="Imagen 1">
+        <?php else: ?>
+        <h2>El Establecimiento todavía no cuenta con imágenes.</h2>
+        <?php endif; ?>
+        <?php if ($gallery['imagen_2']): ?>
+        <img src="<?php echo esc_url( $gallery['imagen_2']['url'] ); ?>" alt="Imagen 2">
+        <?php endif; ?>
+        <?php if ($gallery['imagen_3']): ?>
+        <img src="<?php echo esc_url( $gallery['imagen_3']['url'] ); ?>" alt="Imagen 3">
+        <?php endif; ?>
+        <?php if ($gallery['imagen_4']): ?>
+        <img src="<?php echo esc_url( $gallery['imagen_4']['url'] ); ?>" alt="Imagen 4">
+        <?php endif; ?>
+        <?php if ($gallery['imagen_5']): ?>
+        <img src="<?php echo esc_url( $gallery['imagen_5']['url'] ); ?>" alt="Imagen 5">
+        <?php endif; ?>
       </div>
+      <?php endif; ?>
     </div>
   </div>
 

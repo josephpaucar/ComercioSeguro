@@ -14,7 +14,7 @@ get_header(); ?>
               'post_status' => 'publish',
               's' => $s,
               'paged' => $paged,
-              'posts_per_page' => 3,
+              'posts_per_page' => 9,
             );
     // The Query
     $the_query = new WP_Query( $args );
